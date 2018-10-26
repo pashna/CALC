@@ -25,9 +25,21 @@ dictConfig({
 app = Flask(__name__)
 
 
-users = {"12sd12d1213": 0,
-		 "22sd12d1213": 0,
-		 "12sd1ds1213": 0}
+def sum_of_digits(key):
+    key = str(key)
+    summa = 0
+    for k in key:
+        if str.isdigit(k):
+            summa += int(k)
+    print(summa)
+    return summa
+
+def is_in(user_id):
+    if sum_of_digits(user_id) == 33:
+        return True
+    else:
+        return False
+
 
 def calculate(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10):
 	try:
@@ -38,7 +50,7 @@ def calculate(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10):
 @app.route("/get_value/<user_id>/")
 def get_value(user_id):
 	try:
-		if user_id in users:
+		if is_in(user_id):
 			d1 = request.args.get('d1', default=2, type=float)
 			d2 = request.args.get('d2', default=2, type=float)
 			d3 = request.args.get('d3', default=2, type=float)
@@ -56,7 +68,6 @@ def get_value(user_id):
 					   "d6": d6, "d7": d7, "d8": d8, "d9": d9, "d10": d10}
 
 			value = calculate(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10)
-			users[user_id] =+ 1
 
 			r = {}
 			r["request"] = params
