@@ -47,7 +47,7 @@ def calculate(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10):
 		c = c / sqrt(abs(c))
 		return c
 	except Exception:
-		return -1e30
+		return 1e-30
 
 @app.route("/get_value/<user_id>/")
 def get_value(user_id):
