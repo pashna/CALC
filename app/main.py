@@ -43,7 +43,9 @@ def is_in(user_id):
 
 def calculate(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10):
 	try:
-		return pow(3.141592653589793, d1 * d2) * sqrt(2.0 * d3) - 1.0 / sin(d4) +log(d3 + d5) - d9 / d10 * sqrt(d7 / d8) - d2 * d7
+		c = pow(3.141592653589793, d1 * d2) * sqrt(2.0 * d3) - 1.0 / sin(d4) +log(d3 + d5) - d9 / d10 * sqrt(d7 / d8) - d2 * d7
+		c = c / sqrt(abs(c))
+		return c
 	except Exception:
 		return -1e30
 
